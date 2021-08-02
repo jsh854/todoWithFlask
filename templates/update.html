@@ -1,0 +1,25 @@
+{% extends 'Base.html' %}
+{% block body %}
+
+<h1>
+    Update Your Todo Here
+</h1>
+
+
+<div class="container">
+  <form action="/update/{{updatetodo.sno}}" id="formSubmission" method="POST">
+
+    <span>Title</span>
+    <input type="text"name="title" placeholder="enter your Title" id="name" value="{{updatetodo.title}}">
+    <span>Description</span>
+    <input type="text"name="description" placeholder="Enter your description" id="description" value="{{updatetodo.description}}">
+    <button type="submit">Update</button>
+
+  </form>
+
+
+
+
+
+
+{% endblock body %}

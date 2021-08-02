@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>index file</title></head>
+    <style>
+        body{
+  justify-content:center;
+  align-items:center;
+
+}
+
+form{
+  display:flex;
+  flex-direction:column;
+  width:35vw;
+}
+form input{
+  padding:0.7em 1em;
+}
+form span{
+  padding:0.6em 1em;
+}
+button{
+  padding:1.1em;
+  margin:1em 1em;
+  cursor:pointer;
+}
+ul{
+  list-style:none;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr ;
+  justify-content:center;
+  width:25vw;
+
+}
+ul li{
+  padding:1em 2em .8em 2em;
+  border:1px solid black;
+
+}
+.buttons{
+display:flex;
+flex-direction:row;
+}
+a{
+text-decoration:none;
+color:black;
+cursor:pointer;
+}
+    </style>
+
+<body>
+<h1>
+    Todo App Using flask
+</h1>
+
+
+<div class="container">
+  <form action="/" id="formSubmission" method="POST">
+    <span>Title</span>
+    <input type="text"name="title" placeholder="enter your Title" id="name">
+    <span>Description</span>
+    <input type="text"name="description" placeholder="Enter your description" id="description">
+    <button type="submit">Add Todo</button>
+  </form>
+
+ <ul id="data">
+   <li>Title</li>
+   <li>Time</li>
+   <li>Description</li>
+         {% for user in todos %}
+     <li>{{loop.index}}</li>
+  <li>{{user.title}}</li>
+     <li>{{user.description}}
+         <div class="buttons">
+
+
+      <button><a href="/delete/{{user.sno}}">Delete</a></button>
+       <button><a href="/update/{{user.sno}}">Update</a></button>
+              </div>
+     </li>
+
+{% endfor %}
+ </ul>
+</div>
+</body>
+
+</html>

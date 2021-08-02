@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Todo App Using Flask</title></head>
+    <style>
+        body{
+  justify-content:center;
+  align-items:center;
+
+}
+
+form{
+  display:flex;
+  flex-direction:column;
+  width:35vw;
+}
+form input{
+  padding:0.7em 1em;
+}
+form span{
+  padding:0.6em 1em;
+}
+button{
+  padding:1.1em;
+  margin:1em 1em;
+  cursor:pointer;
+}
+ul{
+  list-style:none;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr ;
+  justify-content:center;
+  width:25vw;
+
+}
+ul li{
+  padding:1em 2em .8em 2em;
+  border:1px solid black;
+
+}
+.buttons{
+display:flex;
+flex-direction:row;
+}
+a{
+text-decoration:none;
+color:black;
+cursor:pointer;
+}
+    </style>
+<body>
+ {% block body %}
+
+{% endblock body %}
+</body>
+</html>
