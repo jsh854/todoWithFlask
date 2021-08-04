@@ -1,9 +1,17 @@
 from flask import Flask, render_template,request,redirect
 from flask_sqlalchemy import SQLAlchemy
+from dotenv import load_dotenv
 import os
+load_dotenv()
+
+db_url = os.environ["DATABASE_URL"]
+
+db_url = db_url.replace('postgres', 'postgresql', 1)
+
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('POSTGRES_URL')
+app.config['SQLALCHEMY_DATABASE_URI'] =db_url
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SECRET_KEY']='thisisthesupersecretforthesecretkey'
 db=SQLAlchemy(app)
 class Todo(db.Model):
     sno=db.Column(db.Integer,primary_key=True)
@@ -11,6 +19,11 @@ class Todo(db.Model):
     description = db.Column(db.String(200), nullable=False)
     def __repr__(self) :
         return "{} is the title and {} is the description".format(self.title,self.description)
+
+#create all the tables and initialise them
+db.create_all()
+db.init_app(app)
+
 
 @app.route("/",methods=['POST','GET'])
 def hello_world():
